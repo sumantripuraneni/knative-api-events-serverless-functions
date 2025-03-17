@@ -1,0 +1,18 @@
+apiVersion: sources.knative.dev/v1
+kind: ApiServerSource
+metadata:
+  name: testevents  
+  namespace: apiserversource-example
+spec:
+  mode: Resource
+  resources:
+    - apiVersion: kubevirt.io/v1
+      kind: VirtualMachine
+    - apiVersion: kubevirt.io/v1
+      kind: VirtualMachineInstance
+  serviceAccountName: events-sa
+  sink:
+    ref:
+      apiVersion: eventing.knative.dev/v1
+      kind: Broker
+      name: vmevents

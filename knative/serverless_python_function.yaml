@@ -1,0 +1,12 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: python-function
+  namespace: apiserversource-example
+spec:
+  template:
+    spec:
+      containers:
+        - image: 'quay.io/rhn_support_stripura/python-function:1.5'
+          ports:
+            - containerPort: 8080

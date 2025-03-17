@@ -1,0 +1,18 @@
+# Use a Python base image
+FROM python:3.9-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the Python script into the container
+COPY cloudevent_receiver.py .
+
+# Install dependencies
+RUN pip install cloudevents flask
+
+# Expose the port for the server
+EXPOSE 8080
+
+# Command to run the application
+CMD ["python", "cloudevent_receiver.py"]
+
