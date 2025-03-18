@@ -1,6 +1,6 @@
 # knative-api-events-functions
 
-Triggering knative function as a result of changes of Virtual Machine resources and display the content of (Mirtual Machine) Cloud Event
+Triggering knative function as a result of changes of Virtual Machine resources and display the content of (KubeVirt Virtual Machine) Cloud Event
 
 ## Overview
 
