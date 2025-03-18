@@ -20,11 +20,6 @@ def receive_event():
     vm_name      = event_metadata.get("name")
     vm_namespace = event_metadata.get("namespace")
 
-    #Get VM Phase and status
-    event_status = event_data.get("status")
-    vm_phase           = event_status.get("phase")
-    vm_printableStatus = event_status.get("printableStatus")
-
     # Print the event attributes (you can also process these as needed)
     print("Event ID:", event_id)
     print("Event Type:", event_type)
@@ -34,8 +29,13 @@ def receive_event():
     print("VM Name:", vm_name)
     print("VM Namespace:", vm_namespace)
 
-    print("VM Phase:", vm_phase)
-    print("VM Status:", vm_printableStatus)
+    #Get VM Phase and status
+    event_status = event_data.get("status")
+    if event_status is not None:
+        vm_phase           = event_status.get("phase")
+        vm_printableStatus = event_status.get("printableStatus")
+        print("VM Phase:", vm_phase)
+        print("VM Status:", vm_printableStatus)
 
     print("Event Data:")
     print(json.dumps(event_data, indent=4))
